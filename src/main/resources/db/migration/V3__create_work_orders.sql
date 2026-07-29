@@ -11,13 +11,8 @@ CREATE TABLE work_orders (
     completed_at DATETIME,
     note VARCHAR(500),
     created_at DATETIME NOT NULL,
-
-    CONSTRAINT fk_work_orders_user
-        FOREIGN KEY (user_id) REFERENCES users(id),
-    CONSTRAINT fk_work_orders_waste_type
-        FOREIGN KEY (waste_type_id) REFERENCES waste_types(id)
-);
-
-CREATE INDEX idx_work_orders_user_id ON work_orders(user_id);
+    CONSTRAINT fk_work_orders_user FOREIGN KEY (user_id) REFERENCES users(id),
+    CONSTRAINT fk_work_orders_waste_type FOREIGN KEY (waste_type_id) REFERENCES waste_types(id)
+);CREATE INDEX idx_work_orders_user_id ON work_orders(user_id);
 CREATE INDEX idx_work_orders_status ON work_orders(status);
 CREATE INDEX idx_work_orders_requested_at ON work_orders(requested_at);

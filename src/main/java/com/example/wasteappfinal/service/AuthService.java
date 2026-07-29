@@ -3,6 +3,7 @@ package com.example.wasteappfinal.service;
 import com.example.wasteappfinal.dto.*;
 import com.example.wasteappfinal.entity.*;
 import com.example.wasteappfinal.enums.Role;
+import com.example.wasteappfinal.enums.UserType;
 import com.example.wasteappfinal.exception.BadRequestException;
 import com.example.wasteappfinal.exception.ForbiddenException;
 import com.example.wasteappfinal.exception.UnauthorizedException;

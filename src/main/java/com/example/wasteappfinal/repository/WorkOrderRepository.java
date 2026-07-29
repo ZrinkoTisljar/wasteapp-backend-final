@@ -61,14 +61,14 @@ public interface WorkOrderRepository extends JpaRepository<WorkOrder, Long> {
      * Koristi DTO WasteTypeReportRow.
      */
     @Query("""
-        SELECT new com.example.wasteapp.dto.WasteTypeReportRow(
+        SELECT new com.example.wasteappfinal.dto.WasteTypeReportRow(
             wo.wasteType.code,
             wo.wasteType.name,
             wo.unit,
             SUM(wo.quantity)
         )
         FROM WorkOrder wo
-        WHERE wo.status = com.example.wasteapp.entity.WorkOrderStatus.COMPLETED
+        WHERE wo.status = com.example.wasteappfinal.enums.WorkOrderStatus.COMPLETED
         GROUP BY wo.wasteType.code, wo.wasteType.name, wo.unit
         ORDER BY wo.wasteType.name, wo.unit
     """)
@@ -78,7 +78,7 @@ public interface WorkOrderRepository extends JpaRepository<WorkOrder, Long> {
      * Izvještaj: broj radnih naloga po statusu.
      */
     @Query("""
-        SELECT new com.example.wasteapp.dto.WorkOrderStatusReportRow(wo.status, COUNT(wo))
+        SELECT new com.example.wasteappfinal.dto.WorkOrderStatusReportRow(wo.status, COUNT(wo))
         FROM WorkOrder wo
         GROUP BY wo.status
         ORDER BY wo.status
