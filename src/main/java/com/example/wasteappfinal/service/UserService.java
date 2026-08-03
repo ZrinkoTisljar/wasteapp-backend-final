@@ -84,6 +84,12 @@ public class UserService {
             throw new BadRequestException("Administratorski račun ne može se obrisati ovom funkcijom.");
         }
 
+        if (user.isApproved()) {
+            throw new BadRequestException(
+                    "Odobrenog korisnika nije moguće obrisati."
+            );
+        }
+
         if (workOrderRepository.existsByUserId(id)) {
             throw new BadRequestException("Korisnik ima radne naloge pa ga nije moguće obrisati.");
         }
